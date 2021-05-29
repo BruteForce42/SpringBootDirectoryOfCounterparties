@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/5.0.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/5.0.1/css/bootstrap.min.css" />
+
+    <title>
+        База данных контрагентов
+    </title>
+</head>
+
+<body>
+<div class="container">
+    <div th:fragment="header">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" th:href="@{/}">На главную</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#" th:href="@{/counterparties}">Список контрагентов</a></li>
+                    <li><a href="#" th:href="@{/counterparties/new}">Добавить контрагента</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+</body>
+</html>

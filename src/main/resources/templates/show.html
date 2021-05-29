@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/5.0.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/5.0.1/css/bootstrap.min.css" />
+
+    <title>
+        Детализация контрагента
+    </title>
+
+</head>
+
+<body>
+<div th:replace="~{fragments/header :: header}">Header</div>
+<div class="container">
+
+    <h1>Детализация контрагента</h1>
+
+    <div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Наименование:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${counterparty.name}">Наименование</p></div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">ИНН:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${counterparty.inn}">ИНН</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">КПП:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${counterparty.kpp}">КПП</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Номер счёта:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${counterparty.accountNumber}">Номер счёта</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">БИК:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${counterparty.bic}">БИК</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Комментарий:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${counterparty.comment}">Комментарий</p>
+                </div>
+            </div>
+
+            <br>
+        </form>
+
+        <form th:method="DELETE" th:action="@{/counterparties/{id}(id=${counterparty.getId()})}">
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-danger">Удалить</button>
+                </div>
+                <div class="col-6"> </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
