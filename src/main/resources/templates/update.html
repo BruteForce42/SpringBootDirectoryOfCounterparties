@@ -28,42 +28,42 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Наименование</label>
                 <div class="col-sm-10">
-                    <input class="form-control" th:field="*{name}"/>
+                    <input class="form-control" th:field="*{name}" maxlength="20"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">ИНН</label>
                 <div class="col-sm-10">
-                    <input class="form-control" th:field="*{inn}"/>
+                    <input class="form-control" th:field="*{inn}" maxlength="12"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">КПП</label>
                 <div class="col-sm-10">
-                    <input class="form-control" th:field="*{kpp}"/>
+                    <input class="form-control" th:field="*{kpp}" maxlength="9"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Номер счёта</label>
                 <div class="col-sm-10">
-                    <input class="form-control" th:field="*{accountNumber}"/>
+                    <input class="form-control" th:field="*{accountNumber}" maxlength="20"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">БИК</label>
                 <div class="col-sm-10">
-                    <input class="form-control" th:field="*{bic}"/>
+                    <input class="form-control" th:field="*{bic}" maxlength="9"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Комментарий</label>
                 <div class="col-sm-10">
-                    <input class="form-control" th:field="*{comment}"/>
+                    <input class="form-control" th:field="*{comment}" maxlength="255"/>
                 </div>
             </div>
 

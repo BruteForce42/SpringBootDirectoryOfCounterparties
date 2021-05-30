@@ -27,6 +27,36 @@
             а также осуществлять их поиск по наименованию и по паре БИК + номер счёта.
         </div>
     </div>
+
+    <br>
+    <form method="GET" action="/counterparties/name">
+        <label for="name">Введите наименование контрагента для поиска:</label>
+        <br>
+        <input type="text" id="name" name="name" maxlength="20">
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-success">Найти</button>
+            </div>
+            <div class="col-6"> </div>
+        </div>
+    </form>
+    <br>
+    <br>
+    <form method="GET" action="/counterparties/accountandbic">
+        <label for="account">Введите номер счёта для поиска:</label>
+        <br>
+        <input type="text" id="account" name="account" maxlength="20">
+        <br>
+        <label for="bic">Введите БИК для поиска:</label>
+        <br>
+        <input type="text" id="bic" name="bic" maxlength="9">
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-success">Найти</button>
+            </div>
+            <div class="col-6"> </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>

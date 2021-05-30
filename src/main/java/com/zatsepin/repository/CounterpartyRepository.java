@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CounterpartyRepository extends JpaRepository<Counterparty, Long> {
     Counterparty findByName(String name);
-    List<Counterparty> findByAccountNumberAndBic(String accountNumber, String bic);
+    Counterparty findByAccountNumberAndBic(String accountNumber, String bic);
 }

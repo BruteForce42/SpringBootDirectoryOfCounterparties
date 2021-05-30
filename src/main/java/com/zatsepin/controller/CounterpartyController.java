@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -40,29 +41,43 @@ public class CounterpartyController {
 
     @GetMapping(value = "/edit/{id}")
     public String updateForm(@PathVariable Long id, Model uiModel) {
+        logger.info("Requested update form for counterparty with id: " + id);
         uiModel.addAttribute("counterparty", counterpartyService.findById(id));
         return "update";
     }
 
     @GetMapping(value = "/new")
     public String createForm(Model uiModel) {
+        logger.info("Requested create form for new counterparty");
         Counterparty counterparty = new Counterparty();
         uiModel.addAttribute("counterparty", counterparty);
         return "update";
     }
 
     @PostMapping
-    public String create(@Valid Counterparty counterparty) {
-        logger.info("Creating counterparty");
+    public String save(@Valid Counterparty counterparty) {
         counterpartyService.save(counterparty);
+        logger.info("Counterparty saved with id: " + counterparty.getId());
         return "redirect:/counterparties/" + counterparty.getId();
     }
 
-    @PostMapping(value = "/{id}")
-    public String update(@Valid Counterparty counterparty) {
-        logger.info("Updating counterparty");
-        counterpartyService.save(counterparty);
-        return "redirect:/counterparties/" + counterparty.getId();
+    @GetMapping(value = "/name")
+    public String findByName(Model uiModel, HttpServletRequest request) {
+        String name = request.getParameter("name");
+        logger.info("Requested counterparty with name: " + name);
+        Counterparty counterparty = counterpartyService.findByName(name);
+        uiModel.addAttribute("counterparty", counterparty);
+        return "show";
+    }
+
+    @GetMapping(value = "/accountandbic")
+    public String findByAccountNumberAndBic(Model uiModel, HttpServletRequest request) {
+        String account = request.getParameter("account");
+        String bic = request.getParameter("bic");
+        logger.info("Requested counterparty with account number: " + account + " and BIC: " + bic);
+        Counterparty counterparty = counterpartyService.findByAccountNumberAndBic(account, bic);
+        uiModel.addAttribute("counterparty", counterparty);
+        return "show";
     }
 
     @DeleteMapping(value = "/{id}")

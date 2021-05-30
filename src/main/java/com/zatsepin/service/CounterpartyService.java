@@ -11,5 +11,5 @@ public interface CounterpartyService {
     void delete(Long id);
     Optional<Counterparty> findById(Long id);
     Counterparty findByName(String name);
-    List<Counterparty> findByAccountNumberAndBic(String accountNumber, String bic);
+    Counterparty findByAccountNumberAndBic(String accountNumber, String bic);
 }
