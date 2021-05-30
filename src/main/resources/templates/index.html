@@ -27,6 +27,43 @@
             а также осуществлять их поиск по наименованию и по паре БИК + номер счёта.
         </div>
     </div>
+    <br>
+    <form class="form-horizontal" th:action="@{/counterparties/name}" method="GET">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Введите наименование контрагента для поиска:</label>
+            <div class="col-sm-2">
+                <input class="form-control" type="text" name="name" maxlength="20"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-success">Найти</button>
+            </div>
+            <div class="col-6"> </div>
+        </div>
+    </form>
+    <br>
+    <br>
+    <form class="form-horizontal" th:action="@{/counterparties/accountandbic}" method="GET">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Введите номер счёта для поиска:</label>
+            <div class="col-sm-2">
+                <input class="form-control" type="text" name="account" maxlength="20"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Введите БИК для поиска:</label>
+            <div class="col-sm-2">
+                <input class="form-control" type="text" name="bic" maxlength="9"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-success">Найти</button>
+            </div>
+            <div class="col-6"> </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>

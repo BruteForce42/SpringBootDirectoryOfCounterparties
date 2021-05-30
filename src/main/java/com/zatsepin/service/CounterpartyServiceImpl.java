@@ -41,7 +41,7 @@ public class CounterpartyServiceImpl implements CounterpartyService {
     }
 
     @Override
-    public List<Counterparty> findByAccountNumberAndBic(String accountNumber, String bic) {
+    public Counterparty findByAccountNumberAndBic(String accountNumber, String bic) {
         return counterpartyRepository.findByAccountNumberAndBic(accountNumber, bic);
     }
 }
