@@ -12,8 +12,12 @@ import java.util.Optional;
 @Service("counterpartyService")
 public class CounterpartyServiceImpl implements CounterpartyService {
 
+    private final CounterpartyRepository counterpartyRepository;
+
     @Autowired
-    private CounterpartyRepository counterpartyRepository;
+    public CounterpartyServiceImpl(CounterpartyRepository counterpartyRepository) {
+        this.counterpartyRepository = counterpartyRepository;
+    }
 
     @Override
     public List<Counterparty> findAll() {

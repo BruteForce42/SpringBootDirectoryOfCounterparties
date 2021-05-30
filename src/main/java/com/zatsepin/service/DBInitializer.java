@@ -11,10 +11,14 @@ import javax.annotation.PostConstruct;
 @Service
 public class DBInitializer {
 
-    private Logger logger = LoggerFactory.getLogger(DBInitializer.class);
+    private static Logger logger = LoggerFactory.getLogger(DBInitializer.class);
+
+    CounterpartyService counterpartyService;
 
     @Autowired
-    CounterpartyServiceImpl counterpartyService;
+    public DBInitializer(CounterpartyService counterpartyService) {
+        this.counterpartyService = counterpartyService;
+    }
 
     @PostConstruct
     public void initDB() {

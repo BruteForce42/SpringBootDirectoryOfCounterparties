@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping(value = "/counterparties")
 public class CounterpartyController {
 
-    private final Logger logger = LoggerFactory.getLogger(CounterpartyController.class);
+    private static Logger logger = LoggerFactory.getLogger(CounterpartyController.class);
 
     @Autowired
     private CounterpartyServiceImpl counterpartyService;
