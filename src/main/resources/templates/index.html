@@ -28,7 +28,7 @@
         </div>
     </div>
     <br>
-    <form class="form-horizontal" th:action="@{/counterparties/name}" method="GET">
+    <form class="form-horizontal" th:action="@{/counterparties/name}" th:method="GET">
         <div class="form-group">
             <label class="col-sm-2 control-label">Введите наименование контрагента для поиска:</label>
             <div class="col-sm-2">
@@ -45,7 +45,7 @@
     <br>
     <br>
 
-    <form class="form-horizontal" th:action="@{/counterparties/accountandbic}" method="GET">
+    <form class="form-horizontal" th:action="@{/counterparties/accountandbic}" th:method="GET">
         <div class="form-group">
             <label class="col-sm-2 control-label">Введите номер счёта для поиска:</label>
             <div class="col-sm-2">

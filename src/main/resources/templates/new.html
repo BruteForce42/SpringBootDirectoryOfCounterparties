@@ -10,7 +10,7 @@
           href="/webjars/bootstrap/5.0.1/css/bootstrap.min.css" />
 
     <title>
-        Обновление контрагента
+        Создание контрагента
     </title>
 </head>
 
@@ -21,7 +21,7 @@
     <h1>Введите требуемые данные</h1>
 
     <div>
-        <form class="form-horizontal" th:object="${counterparty}" th:action="@{/counterparties/{id}}" th:method="PATCH">
+        <form class="form-horizontal" th:object="${counterparty}" th:action="@{/counterparties}" th:method="POST">
             <input type="hidden" th:field="*{id}"/>
 
             <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>

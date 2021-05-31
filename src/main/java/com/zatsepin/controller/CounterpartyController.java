@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,13 +52,30 @@ public class CounterpartyController {
         logger.info("Requested create form for new counterparty");
         Counterparty counterparty = new Counterparty();
         uiModel.addAttribute("counterparty", counterparty);
-        return "update";
+        return "new";
     }
 
     @PostMapping
-    public String save(@Valid Counterparty counterparty) {
+    public String create(@Valid Counterparty counterparty, BindingResult bindingResult, Model uiModel) {
+        if (bindingResult.hasErrors()) {
+            logger.info("Counterparty has validation errors and not allowed to be created!");
+            uiModel.addAttribute(counterparty);
+            return "new";
+        }
         counterpartyService.save(counterparty);
-        logger.info("Counterparty saved with id: " + counterparty.getId());
+        logger.info("Counterparty created with id: " + counterparty.getId());
+        return "redirect:/counterparties/" + counterparty.getId();
+    }
+
+    @PatchMapping(value = "/{id}")
+    public String update(@Valid Counterparty counterparty, BindingResult bindingResult, Model uiModel) {
+        if (bindingResult.hasErrors()) {
+            logger.info("Counterparty has validation errors and not allowed to be updated!");
+            uiModel.addAttribute(counterparty);
+            return "update";
+        }
+        counterpartyService.save(counterparty);
+        logger.info("Counterparty updated with id: " + counterparty.getId());
         return "redirect:/counterparties/" + counterparty.getId();
     }
 
@@ -66,6 +84,9 @@ public class CounterpartyController {
         String name = request.getParameter("name");
         logger.info("Requested counterparty with name: " + name);
         Counterparty counterparty = counterpartyService.findByName(name);
+        if (counterparty == null) {
+            return "nothingfind";
+        }
         uiModel.addAttribute("counterparty", counterparty);
         return "show";
     }
@@ -76,6 +97,9 @@ public class CounterpartyController {
         String bic = request.getParameter("bic");
         logger.info("Requested counterparty with account number: " + account + " and BIC: " + bic);
         Counterparty counterparty = counterpartyService.findByAccountNumberAndBic(account, bic);
+        if (counterparty == null) {
+            return "nothingfind";
+        }
         uiModel.addAttribute("counterparty", counterparty);
         return "show";
     }

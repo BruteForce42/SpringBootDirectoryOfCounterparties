@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/5.0.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/5.0.1/css/bootstrap.min.css" />
+
+    <title>
+        Ничего не найдено
+    </title>
+</head>
+
+<body>
+<div th:replace="~{fragments/header :: header}">Header</div>
+<div class="container">
+    <div class="text-left">
+
+        <h1>Извините.</h1>
+
+        <div class="lead">
+           По вашему запросу ничего не найдено.
+        </div>
+    </div>
+</div>
+</body>
+</html>
