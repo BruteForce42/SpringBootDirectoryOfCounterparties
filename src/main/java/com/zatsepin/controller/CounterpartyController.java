@@ -2,6 +2,7 @@ package com.zatsepin.controller;
 
 import com.zatsepin.entity.Counterparty;
 import com.zatsepin.service.CounterpartyServiceImpl;
+import com.zatsepin.util.CounterpartyValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class CounterpartyController {
 
     private static Logger logger = LoggerFactory.getLogger(CounterpartyController.class);
 
-    @Autowired
     private CounterpartyServiceImpl counterpartyService;
+    private CounterpartyValidator validator;
 
     @GetMapping
     public String list(Model uiModel) {
@@ -62,6 +63,18 @@ public class CounterpartyController {
             uiModel.addAttribute(counterparty);
             return "new";
         }
+        if (validator.isInvalidName(counterparty.getName())
+                || validator.isInvalidInn(counterparty.getInn())
+                || validator.isInvalidKpp(counterparty.getKpp())
+                || validator.isInvalidBic(counterparty.getBic())
+                || validator.isInvalidAccountNumber(counterparty.getAccountNumber(), counterparty.getBic())) {
+            uiModel.addAttribute("isInvalidName", validator.isInvalidName(counterparty.getName()));
+            uiModel.addAttribute("isInvalidInn", validator.isInvalidInn(counterparty.getInn()));
+            uiModel.addAttribute("isInvalidKpp", validator.isInvalidKpp(counterparty.getKpp()));
+            uiModel.addAttribute("isInvalidBic", validator.isInvalidBic(counterparty.getBic()));
+            uiModel.addAttribute("isInvalidAccountNumber", validator.isInvalidAccountNumber(counterparty.getAccountNumber(), counterparty.getBic()));
+            return "new";
+        }
         counterpartyService.save(counterparty);
         logger.info("Counterparty created with id: " + counterparty.getId());
         return "redirect:/counterparties/" + counterparty.getId();
@@ -72,6 +85,16 @@ public class CounterpartyController {
         if (bindingResult.hasErrors()) {
             logger.info("Counterparty has validation errors and not allowed to be updated!");
             uiModel.addAttribute(counterparty);
+            return "update";
+        }
+        if (validator.isInvalidInn(counterparty.getInn())
+                || validator.isInvalidKpp(counterparty.getKpp())
+                || validator.isInvalidBic(counterparty.getBic())
+                || validator.isInvalidAccountNumber(counterparty.getAccountNumber(), counterparty.getBic())) {
+            uiModel.addAttribute("isInvalidInn", validator.isInvalidInn(counterparty.getInn()));
+            uiModel.addAttribute("isInvalidKpp", validator.isInvalidKpp(counterparty.getKpp()));
+            uiModel.addAttribute("isInvalidBic", validator.isInvalidBic(counterparty.getBic()));
+            uiModel.addAttribute("isInvalidAccountNumber", validator.isInvalidAccountNumber(counterparty.getAccountNumber(), counterparty.getBic()));
             return "update";
         }
         counterpartyService.save(counterparty);
@@ -111,4 +134,13 @@ public class CounterpartyController {
         return "redirect:/counterparties";
     }
 
+    @Autowired
+    public void setCounterpartyService(CounterpartyServiceImpl counterpartyService) {
+        this.counterpartyService = counterpartyService;
+    }
+
+    @Autowired
+    public void setValidator(CounterpartyValidator validator) {
+        this.validator = validator;
+    }
 }

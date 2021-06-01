@@ -18,7 +18,7 @@
 <div th:replace="~{fragments/header :: header}">Header</div>
 <div class="container">
 
-    <h1>Введите требуемые данные</h1>
+    <h1>Введите данные для обновления контрагента</h1>
 
     <div>
         <form class="form-horizontal" th:object="${counterparty}" th:action="@{/counterparties/{id}}" th:method="PATCH">
@@ -28,10 +28,11 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Наименование</label>
                 <div class="col-sm-2">
-                    <input class="form-control" th:field="*{name}" maxlength="20"/>
+                    <input class="form-control" th:field="*{name}" maxlength="20" readonly/>
                 </div>
             </div>
 
+            <div style="color:red" th:if="${isInvalidInn}">Вы ввели неверный ИНН</div>
             <div style="color:red" th:if="${#fields.hasErrors('inn')}" th:errors="*{inn}">Inn Error</div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">ИНН</label>
@@ -40,6 +41,7 @@
                 </div>
             </div>
 
+            <div style="color:red" th:if="${isInvalidKpp}">Вы ввели неверный КПП</div>
             <div style="color:red" th:if="${#fields.hasErrors('kpp')}" th:errors="*{kpp}">Kpp Error</div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">КПП</label>
@@ -48,6 +50,7 @@
                 </div>
             </div>
 
+            <div style="color:red" th:if="${isInvalidAccountNumber}">Вы ввели неверный номер счета</div>
             <div style="color:red" th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}">AccountNumber Error</div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Номер счёта</label>
@@ -56,6 +59,7 @@
                 </div>
             </div>
 
+            <div style="color:red" th:if="${isInvalidBic}">Вы ввели неверный БИК</div>
             <div style="color:red" th:if="${#fields.hasErrors('bic')}" th:errors="*{bic}">Bic Error</div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">БИК</label>

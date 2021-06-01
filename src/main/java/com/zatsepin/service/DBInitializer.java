@@ -24,85 +24,94 @@ public class DBInitializer {
     public void initDB() {
         logger.info("Starting database initialization...");
 
-        Counterparty counterparty = new Counterparty();
-        counterparty.setName("Факториал");
-        counterparty.setInn("5504081248");
-        counterparty.setKpp("550401001");
-        counterparty.setAccountNumber("40702810310430001226");
-        counterparty.setBic("044525411");
-        counterparty.setComment("Обслуживание домофонов");
+        Counterparty counterparty = Counterparty.builder()
+                .name("Факториал")
+                .inn("5504081248")
+                .kpp("550401001")
+                .accountNumber("40702810310430001226")
+                .bic("044525411")
+                .comment("Обслуживание домофонов")
+                .build();
         counterpartyService.save(counterparty);
 
-        counterparty = new Counterparty();
-        counterparty.setName("Энергосбыт");
-        counterparty.setInn("5503248039");
-        counterparty.setKpp("550401001");
-        counterparty.setAccountNumber("40702810445000093711");
-        counterparty.setBic("045209673");
-        counterparty.setComment("Омская энергосбытовая комапания");
+        counterparty = Counterparty.builder()
+                .name("Энергосбыт")
+                .inn("5503248039")
+                .kpp("550401001")
+                .accountNumber("40702810445000093711")
+                .bic("045209673")
+                .comment("Омская энергосбытовая комапания")
+                .build();
         counterpartyService.save(counterparty);
 
-        counterparty = new Counterparty();
-        counterparty.setName("Магнит");
-        counterparty.setInn("5401381810");
-        counterparty.setKpp("550401001");
-        counterparty.setAccountNumber("40702810338320002761");
-        counterparty.setBic("046577964");
-        counterparty.setComment("Вывоз бытового мусора");
+        counterparty = Counterparty.builder()
+                .name("Магнит")
+                .inn("5401381810")
+                .kpp("550401001")
+                .accountNumber("40702810338320002761")
+                .bic("046577964")
+                .comment("Вывоз бытового мусора")
+                .build();
         counterpartyService.save(counterparty);
 
-        counterparty = new Counterparty();
-        counterparty.setName("Водоканал");
-        counterparty.setInn("5504097128");
-        counterparty.setKpp("550401001");
-        counterparty.setAccountNumber("40702810045370100747");
-        counterparty.setBic("045209673");
-        counterparty.setComment("Водоснабжение и канализация");
+        counterparty = Counterparty.builder()
+                .name("Водоканал")
+                .inn("5504097128")
+                .kpp("550401001")
+                .accountNumber("40702810045370100747")
+                .bic("045209673")
+                .comment("Водоснабжение и канализация")
+                .build();
         counterpartyService.save(counterparty);
 
-        counterparty = new Counterparty();
-        counterparty.setName("Капремонт");
-        counterparty.setInn("5503239348");
-        counterparty.setKpp("550301001");
-        counterparty.setAccountNumber("40603810701800000001");
-        counterparty.setBic("045004867");
-        counterparty.setComment("Фонд капитального ремонта жилых домов");
+        counterparty = Counterparty.builder()
+                .name("Капремонт")
+                .inn("5503239348")
+                .kpp("550301001")
+                .accountNumber("40603810701800000001")
+                .bic("045004867")
+                .comment("Фонд капитального ремонта жилых домов")
+                .build();
         counterpartyService.save(counterparty);
 
-        counterparty = new Counterparty();
-        counterparty.setName("Тепловая");
-        counterparty.setInn("5501016762");
-        counterparty.setKpp("550301001");
-        counterparty.setAccountNumber("40821810745000000013");
-        counterparty.setBic("045209673");
-        counterparty.setComment("Поставка ГВС");
+        counterparty = Counterparty.builder()
+                .name("Тепловая")
+                .inn("5501016762")
+                .kpp("550301001")
+                .accountNumber("40821810745000000013")
+                .bic("045209673")
+                .comment("Поставка ГВС")
+                .build();
         counterpartyService.save(counterparty);
 
-        counterparty = new Counterparty();
-        counterparty.setName("Газпром");
-        counterparty.setInn("5501174543");
-        counterparty.setKpp("550101001");
-        counterparty.setAccountNumber("40702810445380130909");
-        counterparty.setBic("045209673");
-        counterparty.setComment("Газоснабжение");
+        counterparty = Counterparty.builder()
+                .name("Газпром")
+                .inn("5501174543")
+                .kpp("550101001")
+                .accountNumber("40702810445380130909")
+                .bic("045209673")
+                .comment("Газоснабжение")
+                .build();
         counterpartyService.save(counterparty);
 
-        counterparty = new Counterparty();
-        counterparty.setName("Отопление");
-        counterparty.setInn("5503249258");
-        counterparty.setKpp("550301001");
-        counterparty.setAccountNumber("40702810500000022738");
-        counterparty.setBic("044525823");
-        counterparty.setComment("Распределительные тепловые сети");
+        counterparty = Counterparty.builder()
+                .name("Отопление")
+                .inn("5503249258")
+                .kpp("550301001")
+                .accountNumber("40702810500000022738")
+                .bic("044525823")
+                .comment("Распределительные тепловые сети")
+                .build();
         counterpartyService.save(counterparty);
 
-        counterparty = new Counterparty();
-        counterparty.setName("ЖКХ");
-        counterparty.setInn("5507201659");
-        counterparty.setKpp("550701001");
-        counterparty.setAccountNumber("40702810505010000237");
-        counterparty.setBic("045209777");
-        counterparty.setComment("Обслуживание ЖКХ");
+        counterparty = Counterparty.builder()
+                .name("ЖКХ")
+                .inn("5507201659")
+                .kpp("550701001")
+                .accountNumber("40702810505010000237")
+                .bic("045209777")
+                .comment("Обслуживание ЖКХ")
+                .build();
         counterpartyService.save(counterparty);
 
         logger.info("Database initialization finished.");

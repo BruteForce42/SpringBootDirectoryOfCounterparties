@@ -19,15 +19,15 @@ public class CounterpartyValidator {
         this.counterpartyService = counterpartyService;
     }
 
-    public boolean isValidName(String name) {
-        return name.length() > 2
-                && name.length() < 21
-                && counterpartyService.findByName(name) == null;
+    public boolean isInvalidName(String name) {
+        return name.length() < 3
+                || name.length() > 20
+                || counterpartyService.findByName(name) != null;
     }
 
-    boolean isValidInn(String inn) {
+    public boolean isInvalidInn(String inn) {
         if (inn.matches(".*\\D.*")) {
-            return false;
+            return true;
         }
         if (inn.length() == 10) {
             int checkSum = 0;
@@ -35,7 +35,7 @@ public class CounterpartyValidator {
                 checkSum += Character.getNumericValue(inn.charAt(i)) * COEFFICIENTS_FOR_INN_10[i];
             }
             int checkNumber = checkSum % 11 == 10 ? 0 : checkSum % 11;
-            return checkNumber == Character.getNumericValue(inn.charAt(9));
+            return checkNumber != Character.getNumericValue(inn.charAt(9));
         }
         if (inn.length() == 12) {
             int checkSum1 = 0;
@@ -48,19 +48,19 @@ public class CounterpartyValidator {
                 checkSum2 += Character.getNumericValue(inn.charAt(i)) * COEFFICIENTS_FOR_INN_12[i];
             }
             int checkNumber2 = checkSum2 % 11 == 10 ? 0 : checkSum2 % 11;
-            return checkNumber1 == Character.getNumericValue(inn.charAt(10)) && checkNumber2 == Character.getNumericValue(inn.charAt(11));
+            return checkNumber1 != Character.getNumericValue(inn.charAt(10)) || checkNumber2 != Character.getNumericValue(inn.charAt(11));
         }
-        return false;
+        return true;
     }
 
-    public boolean isValidKpp(String kpp) {
-        return !kpp.matches(".*\\D.*")
-                && kpp.length() == 9;
+    public boolean isInvalidKpp(String kpp) {
+        return kpp.matches(".*\\D.*")
+                || kpp.length() != 9;
     }
 
-    public boolean isValidAccountNumber(String accountNumber, String bic) {
+    public boolean isInvalidAccountNumber(String accountNumber, String bic) {
         if (accountNumber.matches(".*\\D.*") || accountNumber.length() != 20) {
-            return false;
+            return true;
         }
         if (Character.getNumericValue(bic.charAt(6)) == 0 && Character.getNumericValue(bic.charAt(7)) == 0) {
             String accountNumberSequence = "0" + bic.substring(4, 6) + accountNumber;
@@ -68,21 +68,21 @@ public class CounterpartyValidator {
             for (int i = 0; i < 23; i++) {
                 checkSum += Character.getNumericValue(accountNumberSequence.charAt(i)) * COEFFICIENTS_FOR_ACCOUNT_NUMBER[i];
             }
-            return checkSum % 10 == 0;
+            return checkSum % 10 != 0;
         } else {
             String accountNumberSequence = bic.substring(6) + accountNumber;
             int checkSum = 0;
             for (int i = 0; i < 23; i++) {
                 checkSum += Character.getNumericValue(accountNumberSequence.charAt(i)) * COEFFICIENTS_FOR_ACCOUNT_NUMBER[i];
             }
-            return checkSum % 10 == 0;
+            return checkSum % 10 != 0;
         }
     }
 
-    public boolean isValidBic(String bic) {
-        return !bic.matches(".*\\D.*")
-                && bic.length() == 9
-                && Character.getNumericValue(bic.charAt(0)) == 0
-                && Character.getNumericValue(bic.charAt(1)) == 4;
+    public boolean isInvalidBic(String bic) {
+        return bic.matches(".*\\D.*")
+                || bic.length() != 9
+                || Character.getNumericValue(bic.charAt(0)) != 0
+                || Character.getNumericValue(bic.charAt(1)) != 4;
     }
 }
