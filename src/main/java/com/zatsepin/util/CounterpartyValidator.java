@@ -4,6 +4,9 @@ import com.zatsepin.service.CounterpartyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Содержит методы для валидации полей сущности контрагента.
+ */
 @Component
 public class CounterpartyValidator {
 
@@ -19,12 +22,18 @@ public class CounterpartyValidator {
         this.counterpartyService = counterpartyService;
     }
 
+    /**
+     * Проверяет, является ли переданная строка валидным наименованием контрагента.
+     */
     public boolean isInvalidName(String name) {
         return name.length() < 3
                 || name.length() > 20
                 || counterpartyService.findByName(name) != null;
     }
 
+    /**
+     * Проверяет, является ли переданная строка валидным ИНН.
+     */
     public boolean isInvalidInn(String inn) {
         if (inn.matches(".*\\D.*")) {
             return true;
@@ -53,11 +62,17 @@ public class CounterpartyValidator {
         return true;
     }
 
+    /**
+     * Проверяет, является ли переданная строка валидным КПП.
+     */
     public boolean isInvalidKpp(String kpp) {
         return kpp.matches(".*\\D.*")
                 || kpp.length() != 9;
     }
 
+    /**
+     * Проверяет, является ли переданная строка валидным номером счёта по отношению к БИК.
+     */
     public boolean isInvalidAccountNumber(String accountNumber, String bic) {
         if (accountNumber.matches(".*\\D.*") || accountNumber.length() != 20) {
             return true;
@@ -79,6 +94,9 @@ public class CounterpartyValidator {
         }
     }
 
+    /**
+     * Проверяет, является ли переданная строка валидным БИК.
+     */
     public boolean isInvalidBic(String bic) {
         return bic.matches(".*\\D.*")
                 || bic.length() != 9
