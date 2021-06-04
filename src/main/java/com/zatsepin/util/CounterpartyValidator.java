@@ -9,10 +9,10 @@ public class CounterpartyValidator {
 
     private final CounterpartyService counterpartyService;
 
-    private static final int[] COEFFICIENTS_FOR_ACCOUNT_NUMBER = new int[]{7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1};
-    private static final int[] COEFFICIENTS_FOR_INN_10 = new int[]{2, 4, 10, 3, 5, 9, 4, 6, 8, 0};
-    private static final int[] COEFFICIENTS_FOR_INN_11 = new int[]{7, 2, 4, 10, 3, 5, 9, 4, 6, 8, 0};
-    private static final int[] COEFFICIENTS_FOR_INN_12 = new int[]{3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8, 0};
+    private static final int[] COEFFICIENTS_FOR_ACCOUNT_NUMBER = {7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1};
+    private static final int[] COEFFICIENTS_FOR_INN_10 = {2, 4, 10, 3, 5, 9, 4, 6, 8, 0};
+    private static final int[] COEFFICIENTS_FOR_INN_11 = {7, 2, 4, 10, 3, 5, 9, 4, 6, 8, 0};
+    private static final int[] COEFFICIENTS_FOR_INN_12 = {3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8, 0};
 
     @Autowired
     public CounterpartyValidator(CounterpartyService counterpartyService) {

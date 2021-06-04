@@ -116,10 +116,10 @@ public class CounterpartyController {
 
     @GetMapping(value = "/accountandbic")
     public String findByAccountNumberAndBic(Model uiModel, HttpServletRequest request) {
-        String account = request.getParameter("account");
+        String accountNumber = request.getParameter("accountNumber");
         String bic = request.getParameter("bic");
-        logger.info("Requested counterparty with account number: " + account + " and BIC: " + bic);
-        Counterparty counterparty = counterpartyService.findByAccountNumberAndBic(account, bic);
+        logger.info("Requested counterparty with account number: " + accountNumber + " and BIC: " + bic);
+        Counterparty counterparty = counterpartyService.findByAccountNumberAndBic(accountNumber, bic);
         if (counterparty == null) {
             return "nothingfind";
         }
