@@ -6,6 +6,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+/**
+ * Хранимая сущность контрагента.
+ */
 @Data
 @Builder
 @AllArgsConstructor

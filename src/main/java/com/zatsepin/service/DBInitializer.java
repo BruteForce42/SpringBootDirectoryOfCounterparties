@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 
+/**
+ * Инициализирует БД при запуске приложения.
+ */
 @Service
 public class DBInitializer {
 
