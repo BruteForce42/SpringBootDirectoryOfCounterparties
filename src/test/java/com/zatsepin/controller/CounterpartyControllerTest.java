@@ -57,12 +57,12 @@ class CounterpartyControllerTest {
     @Test
     void create() throws Exception {
         mvc.perform(MockMvcRequestBuilders.post("/counterparties")
-                .param("name", "Контрагент")
-                .param("inn", "5503248039")
-                .param("kpp", "550401001")
-                .param("accountNumber", "40702810445000093711")
-                .param("bic", "045209673")
-                .param("comment", "Комментарий"))
+                        .param("name", "Контрагент")
+                        .param("inn", "5503248039")
+                        .param("kpp", "550401001")
+                        .param("accountNumber", "40702810445000093711")
+                        .param("bic", "045209673")
+                        .param("comment", "Комментарий"))
                 .andExpect(redirectedUrl("/counterparties/10"))
                 .andExpect(status().is3xxRedirection());
     }
@@ -70,13 +70,13 @@ class CounterpartyControllerTest {
     @Test
     void update() throws Exception {
         mvc.perform(MockMvcRequestBuilders.patch("/counterparties/4")
-                .param("id", "4")
-                .param("name", "Водоканал")
-                .param("inn", "5504097128")
-                .param("kpp", "550401001")
-                .param("accountNumber", "40702810045370100747")
-                .param("bic", "045209673")
-                .param("comment", "Обновлённый комментарий"))
+                        .param("id", "4")
+                        .param("name", "Водоканал")
+                        .param("inn", "5504097128")
+                        .param("kpp", "550401001")
+                        .param("accountNumber", "40702810045370100747")
+                        .param("bic", "045209673")
+                        .param("comment", "Обновлённый комментарий"))
                 .andExpect(redirectedUrl("/counterparties/4"))
                 .andExpect(status().is3xxRedirection());
     }
@@ -84,7 +84,7 @@ class CounterpartyControllerTest {
     @Test
     void findByName() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/counterparties/name")
-                .param("name", "Водоканал"))
+                        .param("name", "Водоканал"))
                 .andExpect(view().name("show"))
                 .andExpect(status().isOk());
     }
@@ -92,8 +92,8 @@ class CounterpartyControllerTest {
     @Test
     void findByAccountNumberAndBic() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/counterparties/accountandbic")
-                .param("accountNumber", "40603810701800000001")
-                .param("bic", "045004867"))
+                        .param("accountNumber", "40603810701800000001")
+                        .param("bic", "045004867"))
                 .andExpect(view().name("show"))
                 .andExpect(status().isOk());
     }

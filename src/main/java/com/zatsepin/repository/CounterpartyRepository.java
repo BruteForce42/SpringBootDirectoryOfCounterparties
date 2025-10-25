@@ -8,5 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface CounterpartyRepository extends JpaRepository<Counterparty, Long> {
     Counterparty findByName(String name);
+
     Counterparty findByAccountNumberAndBic(String accountNumber, String bic);
 }

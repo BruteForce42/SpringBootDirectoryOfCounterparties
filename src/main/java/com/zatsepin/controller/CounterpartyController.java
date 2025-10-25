@@ -3,6 +3,8 @@ package com.zatsepin.controller;
 import com.zatsepin.entity.Counterparty;
 import com.zatsepin.service.CounterpartyServiceImpl;
 import com.zatsepin.util.CounterpartyValidator;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -46,7 +46,7 @@ public class CounterpartyController {
      * Посредством сервисного слоя выполняет поиск контрагента по идентификатору
      * переданному в качестве перменной пути GET-запроса.
      *
-     * @param id идентификатор отображаемого контрагента
+     * @param id      идентификатор отображаемого контрагента
      * @param uiModel объект модели для обмена данными между контроллером и представлением
      * @return имя представления для отображения контрагента
      */
@@ -61,7 +61,7 @@ public class CounterpartyController {
     /**
      * Возвращает представление содержащее форму для обновления контрагента.
      *
-     * @param id идентификатор обновляемого контрагента
+     * @param id      идентификатор обновляемого контрагента
      * @param uiModel объект модели для обмена данными между контроллером и представлением
      * @return имя представления содержащего форму для обновления контрагента
      */
@@ -89,9 +89,9 @@ public class CounterpartyController {
     /**
      * Посредством сервисного слоя выполняет сохранение контрагента.
      *
-     * @param counterparty объект сохраняемого контрагента
+     * @param counterparty  объект сохраняемого контрагента
      * @param bindingResult объект содержащий ошибки валидации объекта контрагента
-     * @param uiModel объект модели для обмена данными между контроллером и представлением
+     * @param uiModel       объект модели для обмена данными между контроллером и представлением
      * @return перенаправление на указанный URL
      */
     @PostMapping
@@ -121,9 +121,9 @@ public class CounterpartyController {
     /**
      * Посредством сервисного слоя выполняет обновление контрагента.
      *
-     * @param counterparty объект обновляемого контрагента
+     * @param counterparty  объект обновляемого контрагента
      * @param bindingResult объект содержащий ошибки валидации объекта контрагента
-     * @param uiModel объект модели для обмена данными между контроллером и представлением
+     * @param uiModel       объект модели для обмена данными между контроллером и представлением
      * @return перенаправление на указанный URL
      */
     @PatchMapping(value = "/{id}")
